@@ -1,0 +1,1 @@
+﻿var BlogModule = angular.module('BlogModule', ["ngSanitize"]);

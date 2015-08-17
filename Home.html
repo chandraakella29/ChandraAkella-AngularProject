@@ -1,0 +1,79 @@
+﻿<!--This is Chandra Akella. In contrast to the requirement of using Twitter's API, which requires OAuth, I have used Instagram and GoogleMaps API.
+The reason I took this freedom of selecting my own API's is after having a look at the comment by Mr. Matt Clement who said "I wanted to see them use call an API. I don't care if it's twitter." 
+at https://lifeway.atlassian.net/wiki/display/LRPI/AngularJS+Project+Exercise and thus this application.
+The idea is to create an application that takes any location as a parameter and return the images taken at that location using the Instagram and Google Maps API. -->
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="BlogModule">
+<head>
+    <title></title>
+    <link href="Content/css/bootstrap.css" rel="stylesheet" />
+    <link href="Content/css/bootstrap-theme.css" rel="stylesheet" />
+    <script src="Script/jquery-2.1.4.js"></script>
+    <script src="Script/bootstrap.js"></script>
+    <script src="Script/angular.js"></script>
+    <script src="Script/angular-sanitize.js"></script>
+    <script src="Script/init.js"></script>
+    <script src="Script/Controller/BlogController.js"></script>
+    <style type="text/css">
+        .c-title {
+            margin-top: 70px;
+        }
+
+        .post-warper {
+            padding: 10px 10px 10px 30px !important;
+        }
+
+        .like {
+            font-size: 30px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .like-margin {
+            margin-top: 40px;
+        }
+		li{
+			margin-top: 10px;
+			margin-right: 10px;
+		}
+    </style>
+
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#" class="navbar-brand">ChandraAkella</a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar" ng-controller="BlogController">
+                <ul class="nav navbar-nav">
+					<li><input type="text" class="form-control" placeholder="Enter Any Location" id="location"></li>
+					<li> <button type="submit" class="btn btn-default" ng-click = "getImages()">Get Images!!!</button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container" ng-controller="BlogController">
+        <div class="jumbotron c-title">
+            <div>
+                <h1><span ng-bind="model.Name"></span></h1>
+                    <b>Created By : </b> <span>{{model.CreatedBy| uppercase }}</span> <b>Created On : </b> <span>{{model.CreatedOn}}</span>
+                <div>
+				</div>
+            </div>
+        </div>
+		<!-- This is where we dynamically add the images received from the Instagram API-->
+		<div id="ImagesDiv" class="col-lg-12">
+		</div>
+		
+    </div>
+</body>
+</html>
